@@ -3,15 +3,19 @@ package green.edu.intec.daltonism;
 import android.graphics.Bitmap;
 import android.media.Image;
 
+import java.io.Serializable;
+
 /**
  * Created by Jorge on 4/8/2015.
  */
-public class Question {
+@SuppressWarnings("serial")
+public class Question implements Serializable {
 
     private int plate;
     private Bitmap image;
     private Type type;
     private String correctAnswer;
+    private boolean isCorrect;
 
     public Question(int plate, String correctAnswer) {
         this.plate = plate;
@@ -50,5 +54,13 @@ public class Question {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public boolean isCorrect() {
+        return isCorrect;
+    }
+
+    public void setCorrect(boolean isCorrect) {
+        this.isCorrect = isCorrect;
     }
 }

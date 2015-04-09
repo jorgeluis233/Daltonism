@@ -1,5 +1,6 @@
 package green.edu.intec.daltonism;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -22,7 +23,6 @@ import java.util.ArrayList;
 public class TestActivity extends ActionBarActivity {
 
     public ArrayList<Question> questions;
-    public ArrayList<Boolean> answers;
     public EditText editAnswer;
     public TextView plateName;
     public ImageView imageQuestion;
@@ -36,7 +36,6 @@ public class TestActivity extends ActionBarActivity {
         setContentView(R.layout.activity_test);
         this.setTitle("Ishihara Test");
         questions = new ArrayList<Question>();
-        answers = new ArrayList<Boolean>();
         createQuestions();
         editAnswer = (EditText)findViewById(R.id.question_answer);
         imageQuestion = (ImageView)findViewById(R.id.question_image);
@@ -144,11 +143,11 @@ public class TestActivity extends ActionBarActivity {
         if(currentQuestion < 37){
             if(editAnswer.getText().toString().equals(questions.get(currentQuestion).getCorrectAnswer())){
 
-                answers.add(true);
+
 
             } else {
 
-                answers.add(false);
+                questions.get(currentQuestion).setCorrect(false);
             }
 
             currentQuestion++;
@@ -165,7 +164,10 @@ public class TestActivity extends ActionBarActivity {
 
 
         } else {
-            Toast.makeText(this,"Now the results!", Toast.LENGTH_SHORT).show();
+            Intent results = new Intent(this, ResultsActivity.class);
+            results.putExtra("questionsList",questions);
+            startActivity(results);
+            this.finish();
         }
 
     }

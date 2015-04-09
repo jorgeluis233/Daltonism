@@ -10,5 +10,6 @@
     <string name="how_to_play">How the test works: For each plate you have to either enter the number or you have to choose the number of lines you can see. If you dont see anything just leave the input field empty.</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_results">ResultsActivity</string>
 
 </resources>
