@@ -13,11 +13,11 @@ public class Question {
     private String answer;
     private String correctAnswer;
 
-    public Question(String correctAnswer, Image image, Type type, int plate) {
-        this.correctAnswer = correctAnswer;
-        this.image = image;
-        this.type = type;
+    public Question(int plate, Type type, Image image, String correctAnswer) {
         this.plate = plate;
+        this.type = type;
+        this.image = image;
+        this.correctAnswer = correctAnswer;
     }
 
     public int getPlate() {
