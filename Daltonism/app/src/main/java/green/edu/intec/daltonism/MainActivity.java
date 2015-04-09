@@ -2,8 +2,10 @@ package green.edu.intec.daltonism;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -31,9 +33,14 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            System.exit(0);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void startTest(View button){
+
     }
 }

@@ -2,5 +2,11 @@
     <string name="app_name">Daltonism</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_exit">Exit</string>
+    <string name="tittle">Ishihara 38 Plates CVD Test</string>
+    <string name="test_description">The Ishihara Test is the most well known color blindness test all around the world. It consists of 38 so called pseudoisochromatic plates,
+        each of them showing either a number or some lines. According to what you can see and what not, the test gives feedback of the degree of your red-green color vision deficiency.
+    This test can only be used to detect red-green color blindness.</string>
+    <string name="how_to_play">How the test works: For each plate you have to either enter the number or you have to choose the number of lines you can see. If you dont see anything just leave the input field empty.</string>
+
 </resources>
