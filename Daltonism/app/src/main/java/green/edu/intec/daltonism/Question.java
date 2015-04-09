@@ -1,5 +1,6 @@
 package green.edu.intec.daltonism;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 
 /**
@@ -8,15 +9,12 @@ import android.media.Image;
 public class Question {
 
     private int plate;
-    private Type type;
-    private Image image;
+    private Bitmap image;
     private String answer;
     private String correctAnswer;
 
-    public Question(int plate, Type type, Image image, String correctAnswer) {
+    public Question(int plate, String correctAnswer) {
         this.plate = plate;
-        this.type = type;
-        this.image = image;
         this.correctAnswer = correctAnswer;
     }
 
@@ -28,19 +26,12 @@ public class Question {
         this.plate = plate;
     }
 
-    public Type getType() {
-        return type;
-    }
 
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public Image getImage() {
+    public Bitmap getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(Bitmap image) {
         this.image = image;
     }
 

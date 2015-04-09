@@ -1,10 +1,16 @@
 package green.edu.intec.daltonism;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -12,6 +18,7 @@ import java.util.ArrayList;
 public class TestActivity extends ActionBarActivity {
 
     public ArrayList<Question> questions;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,67 @@ public class TestActivity extends ActionBarActivity {
     public void createQuestions(){
 
         questions.clear();
+        Bitmap[] maps = new Bitmap[38];
+        int first = 2130837559;
+        for(int x = 1; x <=38; x++){
+            maps[x-1] = BitmapFactory.decodeResource(getResources(), first);
+            first++;
+        }
+
+        Question[] q = new Question[38];
+        q[0] = new Question(1, "12");
+        q[1] = new Question(2, "8");
+        q[2] = new Question(3, "6");
+        q[3] = new Question(4, "29");
+        q[4] = new Question(5, "57");
+        q[5] = new Question(6, "5");
+        q[6] = new Question(7, "3");
+        q[7] = new Question(8, "15");
+        q[8] = new Question(9, "74");
+        q[9] = new Question(10, "2");
+        q[10] = new Question(11, "6");
+        q[11] = new Question(12, "97");
+        q[12] = new Question(13, "45");
+        q[13] = new Question(14, "5");
+        q[14] = new Question(15, "7");
+        q[15] = new Question(16, "16");
+        q[16] = new Question(17, "73");
+        q[17] = new Question(18, "");
+        q[18] = new Question(19, "");
+        q[19] = new Question(20, "");
+        q[20] = new Question(21, "");
+        q[21] = new Question(22, "26");
+        q[22] = new Question(23, "42");
+        q[23] = new Question(24, "35");
+        q[24] = new Question(25, "96");
+        q[25] = new Question(26, "2");
+        q[26] = new Question(27, "2");
+        q[27] = new Question(28, "0");
+        q[28] = new Question(29, "0");
+        q[29] = new Question(30, "1");
+        q[30] = new Question(31, "1");
+        q[31] = new Question(32, "1");
+        q[32] = new Question(33, "1");
+        q[33] = new Question(34, "1");
+        q[34] = new Question(35, "1");
+        q[35] = new Question(36, "1");
+        q[36] = new Question(37, "1");
+        q[37] = new Question(38, "1");
+
+        for (int x = 0; x<38; x++){
+            questions.add(q[x]);
+            questions.get(x).setImage(maps[x]);
+        }
 
     }
+
+   /* public void prueba(View button){
+        ImageView iv=(ImageView)findViewById(R.id.imageView);
+        EditText et=(EditText)findViewById(R.id.editText);
+
+        et.setText("Plate "+ (num+1));
+        iv.setImageBitmap(questions.get(num).getImage());
+        num++;
+
+    }*/
 }
