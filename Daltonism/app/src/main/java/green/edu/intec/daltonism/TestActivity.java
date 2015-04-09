@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class TestActivity extends ActionBarActivity {
 
     public ArrayList<Question> questions;
+    public ArrayList<Boolean> answers;
     public EditText editAnswer;
     public TextView plateName;
     public ImageView imageQuestion;
@@ -36,6 +37,7 @@ public class TestActivity extends ActionBarActivity {
         setContentView(R.layout.activity_test);
         this.setTitle("Ishihara Test");
         questions = new ArrayList<Question>();
+        answers = new ArrayList<Boolean>();
         createQuestions();
         editAnswer = (EditText)findViewById(R.id.question_answer);
         imageQuestion = (ImageView)findViewById(R.id.question_image);
@@ -142,12 +144,12 @@ public class TestActivity extends ActionBarActivity {
     public void submitAnswer(View button){
         if(currentQuestion < 37){
             if(editAnswer.getText().toString().equals(questions.get(currentQuestion).getCorrectAnswer())){
-
-
+                questions.get(currentQuestion).setCorrect(false);
+                answers.add(true);
 
             } else {
-
                 questions.get(currentQuestion).setCorrect(false);
+                answers.add(false);
             }
 
             currentQuestion++;
@@ -165,7 +167,7 @@ public class TestActivity extends ActionBarActivity {
 
         } else {
             Intent results = new Intent(this, ResultsActivity.class);
-            results.putExtra("questionsList",questions);
+            results.putExtra("questionsList",answers);
             startActivity(results);
             this.finish();
         }
