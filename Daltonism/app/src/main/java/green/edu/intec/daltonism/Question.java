@@ -10,7 +10,7 @@ public class Question {
 
     private int plate;
     private Bitmap image;
-    private String answer;
+    private Type type;
     private String correctAnswer;
 
     public Question(int plate, String correctAnswer) {
@@ -35,13 +35,6 @@ public class Question {
         this.image = image;
     }
 
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
 
     public String getCorrectAnswer() {
         return correctAnswer;
@@ -49,5 +42,13 @@ public class Question {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 }

@@ -11,6 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -18,15 +22,33 @@ import java.util.ArrayList;
 public class TestActivity extends ActionBarActivity {
 
     public ArrayList<Question> questions;
+    public ArrayList<Boolean> answers;
+    public EditText editAnswer;
+    public TextView plateName;
+    public ImageView imageQuestion;
+    public TextView textQuestion;
+    public int currentQuestion;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-
+        this.setTitle("Ishihara Test");
         questions = new ArrayList<Question>();
+        answers = new ArrayList<Boolean>();
         createQuestions();
+        editAnswer = (EditText)findViewById(R.id.question_answer);
+        imageQuestion = (ImageView)findViewById(R.id.question_image);
+        textQuestion = (TextView)findViewById(R.id.question_display);
+        plateName = (TextView)findViewById(R.id.question_name);
+        currentQuestion = 0;
+        plateName.setText("Plate " + (questions.get(currentQuestion).getPlate()+""));
+        textQuestion.setText("What number do you see?");
+
+
+        imageQuestion.setImageBitmap(questions.get(currentQuestion).getImage());
+
     }
 
 
@@ -104,20 +126,49 @@ public class TestActivity extends ActionBarActivity {
         q[36] = new Question(37, "1");
         q[37] = new Question(38, "1");
 
+
         for (int x = 0; x<38; x++){
             questions.add(q[x]);
             questions.get(x).setImage(maps[x]);
+            if(x<25){
+                questions.get(x).setType(Type.Number);
+            }else {
+                questions.get(x).setType(Type.Line);
+            }
+        }
+
+
+    }
+
+    public void submitAnswer(View button){
+        if(currentQuestion < 37){
+            if(editAnswer.getText().toString().equals(questions.get(currentQuestion).getCorrectAnswer())){
+
+                answers.add(true);
+
+            } else {
+
+                answers.add(false);
+            }
+
+            currentQuestion++;
+            if(currentQuestion < 38){
+                imageQuestion.setImageBitmap(questions.get(currentQuestion).getImage());
+                editAnswer.setText("");
+                plateName.setText("Plate " + (questions.get(currentQuestion).getPlate()+""));
+                if(questions.get(currentQuestion).getType().toString().equals("Line")){
+                    textQuestion.setText("How many lines do you see?");
+                }else {
+                    textQuestion.setText("What number do you see?");
+                }
+            }
+
+
+        } else {
+            Toast.makeText(this,"Now the results!", Toast.LENGTH_SHORT).show();
         }
 
     }
 
-   /* public void prueba(View button){
-        ImageView iv=(ImageView)findViewById(R.id.imageView);
-        EditText et=(EditText)findViewById(R.id.editText);
 
-        et.setText("Plate "+ (num+1));
-        iv.setImageBitmap(questions.get(num).getImage());
-        num++;
-
-    }*/
 }
