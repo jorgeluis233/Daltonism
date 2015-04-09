@@ -1,17 +1,25 @@
 package green.edu.intec.daltonism;
 
+import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 
 public class TestActivity extends ActionBarActivity {
+
+    public ArrayList<Question> questions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+
+        questions = new ArrayList<Question>();
+        createQuestions();
     }
 
 
@@ -37,5 +45,11 @@ public class TestActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void createQuestions(){
+
+        questions.clear();
+
     }
 }
