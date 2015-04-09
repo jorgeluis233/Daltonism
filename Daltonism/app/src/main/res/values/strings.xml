@@ -8,5 +8,7 @@
         each of them showing either a number or some lines. According to what you can see and what not, the test gives feedback of the degree of your red-green color vision deficiency.
     This test can only be used to detect red-green color blindness.</string>
     <string name="how_to_play">How the test works: For each plate you have to either enter the number or you have to choose the number of lines you can see. If you dont see anything just leave the input field empty.</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
