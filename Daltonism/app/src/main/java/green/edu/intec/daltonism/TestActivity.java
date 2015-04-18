@@ -166,10 +166,7 @@ public class TestActivity extends ActionBarActivity {
 
 
         } else {
-            Intent results = new Intent(this, ResultsActivity.class);
-            results.putExtra("questionsList",answers);
-            startActivity(results);
-            this.finish();
+           //here we call the resutls activity
         }
 
     }

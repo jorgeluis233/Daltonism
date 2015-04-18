@@ -20,14 +20,6 @@
             android:name=".TestActivity"
             android:label="@string/title_activity_test" >
         </activity>
-        <activity
-            android:name=".ResultsActivity"
-            android:label="@string/title_activity_results"
-            android:parentActivityName=".TestActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="green.edu.intec.daltonism.TestActivity" />
-        </activity>
     </application>
 
 </manifest>
