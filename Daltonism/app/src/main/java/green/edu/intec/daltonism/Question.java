@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Question implements Serializable {
 
     private int plate;
-    private Bitmap image;
+    private byte[] image;
     private Type type;
     private String correctAnswer;
     private boolean isCorrect;
@@ -31,11 +31,11 @@ public class Question implements Serializable {
     }
 
 
-    public Bitmap getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(Bitmap image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
