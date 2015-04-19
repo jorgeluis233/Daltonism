@@ -142,16 +142,14 @@ public class TestActivity extends ActionBarActivity {
     public void submitAnswer(View button){
         if(currentQuestion < 37){
             if(editAnswer.getText().toString().equals(questions.get(currentQuestion).getCorrectAnswer())){
-                questions.get(currentQuestion).setCorrect(false);
+                questions.get(currentQuestion).setCorrect(true);
 
             } else {
                 questions.get(currentQuestion).setCorrect(false);
             }
-            if(editAnswer.getText().toString().equals("")){
-                questions.get(currentQuestion).setAnswer("None");
-            }else {
+
                 questions.get(currentQuestion).setAnswer(editAnswer.getText().toString());
-            }
+
 
             currentQuestion++;
             if(currentQuestion < 38){
