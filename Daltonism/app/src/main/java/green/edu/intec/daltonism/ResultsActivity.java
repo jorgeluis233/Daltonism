@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -32,6 +34,9 @@ public class ResultsActivity extends ActionBarActivity {
         Intent intent = getIntent();
         questions = (ArrayList<Question>)intent.getSerializableExtra("QUESTION_LIST");
         loadTable();
+        Toast.makeText(this,"Click on menu for detailed results and maps!", Toast.LENGTH_LONG).show();
+
+
 
     }
 
@@ -39,7 +44,7 @@ public class ResultsActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_results1, menu);
         return true;
     }
 
@@ -51,8 +56,8 @@ public class ResultsActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            System.exit(0);
+        if (id == R.id.action_results) {
+            test();
             return true;
         }
 
@@ -69,9 +74,10 @@ public class ResultsActivity extends ActionBarActivity {
 
     public void loadTable(){
         TableLayout table = (TableLayout) findViewById(R.id.tableLayout2);
+        TableRow row=new TableRow(this);
         for(int i=0;i<questions.size();i++)
         {
-            TableRow row=new TableRow(this);
+            row=new TableRow(this);
             table.addView(row);
             Question question = questions.get(i);
             TextView tvPlate=new TextView(this);
@@ -87,8 +93,7 @@ public class ResultsActivity extends ActionBarActivity {
             TextView tvAnswer=new TextView(this);
             String answer = (question.getAnswer().isEmpty()) ? "__" : question.getAnswer();
             tvAnswer.setText(answer);
-            Toast.makeText(this, "This is the answer: "+ question.getAnswer(), Toast.LENGTH_LONG).show();
-            tvAnswer.setPadding(160,0,20,0);
+            tvAnswer.setPadding(160, 0, 20, 0);
             TextView tvResult=new TextView(this);
             String correct = (question.isCorrect()) ? "Correct!" : "Incorrect";
             tvResult.setText(correct);
@@ -99,8 +104,12 @@ public class ResultsActivity extends ActionBarActivity {
             row.addView(tvAnswer);
             row.addView(tvResult);
 
-
         }
 
+
+    }
+
+    public void test(){
+        Toast.makeText(this, "funciona", Toast.LENGTH_SHORT).show();
     }
 }
