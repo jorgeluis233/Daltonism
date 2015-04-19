@@ -25,12 +25,13 @@ public class ResultsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+        this.setTitle("Results");
         maps = new Bitmap[38];
         loadImages();
 
         Intent intent = getIntent();
         questions = (ArrayList<Question>)intent.getSerializableExtra("QUESTION_LIST");
-       // loadTable();
+        loadTable();
 
     }
 
@@ -67,20 +68,35 @@ public class ResultsActivity extends ActionBarActivity {
     }
 
     public void loadTable(){
-        TableLayout table = (TableLayout) findViewById(R.id.tableLayout1);
+        TableLayout table = (TableLayout) findViewById(R.id.tableLayout2);
         for(int i=0;i<questions.size();i++)
         {
             TableRow row=new TableRow(this);
+            table.addView(row);
             Question question = questions.get(i);
             TextView tvPlate=new TextView(this);
-            tvPlate.setText(""+question.getPlate());
-            tvPlate.setPadding(10,0,10,0);
+            String plate = (question.getPlate() < 10) ? ("0"+question.getPlate()) : (question.getPlate()+"");
+            tvPlate.setText(plate);
+            tvPlate.setPadding(40,0,10,0);
+            TextView tvType=new TextView(this);
+            tvType.setText(question.getType().toString());
+            tvType.setPadding(40,0,10,0);
+            TextView tvCorrectAnswer=new TextView(this);
+            tvCorrectAnswer.setText(question.getCorrectAnswer());
+            tvCorrectAnswer.setPadding(100,0,10,0);
             TextView tvAnswer=new TextView(this);
-            tvAnswer.setText(question.getCorrectAnswer());
-            tvAnswer.setPadding(10,0,10,0);
-            table.addView(row);
+            tvAnswer.setText(question.getAnswer());
+            tvAnswer.setPadding(160,0,20,0);
+            TextView tvResult=new TextView(this);
+            String correct = (question.isCorrect()) ? "Correct!" : "Incorrect";
+            tvResult.setText(correct);
+            tvResult.setPadding(45,0,10,0);
             row.addView(tvPlate);
+            row.addView(tvType);
+            row.addView(tvCorrectAnswer);
             row.addView(tvAnswer);
+            row.addView(tvResult);
+
 
         }
 
