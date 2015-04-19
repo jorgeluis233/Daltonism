@@ -85,7 +85,9 @@ public class ResultsActivity extends ActionBarActivity {
             tvCorrectAnswer.setText(question.getCorrectAnswer());
             tvCorrectAnswer.setPadding(100,0,10,0);
             TextView tvAnswer=new TextView(this);
-            tvAnswer.setText(question.getAnswer());
+            String answer = (question.getAnswer().isEmpty()) ? "__" : question.getAnswer();
+            tvAnswer.setText(answer);
+            Toast.makeText(this, "This is the answer: "+ question.getAnswer(), Toast.LENGTH_LONG).show();
             tvAnswer.setPadding(160,0,20,0);
             TextView tvResult=new TextView(this);
             String correct = (question.isCorrect()) ? "Correct!" : "Incorrect";

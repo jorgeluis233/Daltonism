@@ -140,7 +140,7 @@ public class TestActivity extends ActionBarActivity {
     }
 
     public void submitAnswer(View button){
-        if(currentQuestion < 37){
+        if(currentQuestion <= 37){
             if(editAnswer.getText().toString().equals(questions.get(currentQuestion).getCorrectAnswer())){
                 questions.get(currentQuestion).setCorrect(true);
 
@@ -148,29 +148,28 @@ public class TestActivity extends ActionBarActivity {
                 questions.get(currentQuestion).setCorrect(false);
             }
 
-                questions.get(currentQuestion).setAnswer(editAnswer.getText().toString());
+            questions.get(currentQuestion).setAnswer(editAnswer.getText().toString());
 
 
             currentQuestion++;
-            if(currentQuestion < 38){
-                imageQuestion.setImageBitmap(maps[currentQuestion]);
-                editAnswer.setText("");
-                plateName.setText("Plate " + (questions.get(currentQuestion).getPlate()+""));
-                if(questions.get(currentQuestion).getType().toString().equals("Line")){
-                    textQuestion.setText("How many lines do you see?");
-                }else {
-                    textQuestion.setText("What number do you see?");
-                }
+            if(currentQuestion == 38){
+                Intent intent = new Intent(this, ResultsActivity.class);
+                intent.putExtra("QUESTION_LIST",questions);
+                startActivity(intent);
+            } else {
+
+                    imageQuestion.setImageBitmap(maps[currentQuestion]);
+                    editAnswer.setText("");
+                    plateName.setText("Plate " + (questions.get(currentQuestion).getPlate() + ""));
+                    if (questions.get(currentQuestion).getType().toString().equals("Line")) {
+                        textQuestion.setText("How many lines do you see?");
+                    } else {
+                        textQuestion.setText("What number do you see?");
+                    }
+
             }
-
-
-        } else {
-            Intent intent = new Intent(this, ResultsActivity.class);
-            intent.putExtra("QUESTION_LIST",questions);
-            startActivity(intent);
         }
 
     }
-
 
 }
