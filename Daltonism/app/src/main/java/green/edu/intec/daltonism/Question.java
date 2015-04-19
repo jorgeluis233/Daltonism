@@ -12,10 +12,10 @@ import java.io.Serializable;
 public class Question implements Serializable {
 
     private int plate;
-    private byte[] image;
     private Type type;
     private String correctAnswer;
     private boolean isCorrect;
+    private String answer;
 
     public Question(int plate, String correctAnswer) {
         this.plate = plate;
@@ -29,16 +29,6 @@ public class Question implements Serializable {
     public void setPlate(int plate) {
         this.plate = plate;
     }
-
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
 
     public String getCorrectAnswer() {
         return correctAnswer;
@@ -62,5 +52,14 @@ public class Question implements Serializable {
 
     public void setCorrect(boolean isCorrect) {
         this.isCorrect = isCorrect;
+    }
+
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }

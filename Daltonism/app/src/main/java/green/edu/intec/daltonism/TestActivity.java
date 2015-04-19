@@ -28,7 +28,7 @@ public class TestActivity extends ActionBarActivity {
     public ImageView imageQuestion;
     public TextView textQuestion;
     public int currentQuestion;
-    public BitmapConverter bitconverter;
+    Bitmap[] maps;
 
 
     @Override
@@ -37,7 +37,7 @@ public class TestActivity extends ActionBarActivity {
         setContentView(R.layout.activity_test);
         this.setTitle("Ishihara Test");
         questions = new ArrayList<Question>();
-        bitconverter = new BitmapConverter();
+        maps = new Bitmap[38];
         createQuestions();
         editAnswer = (EditText)findViewById(R.id.question_answer);
         imageQuestion = (ImageView)findViewById(R.id.question_image);
@@ -48,7 +48,7 @@ public class TestActivity extends ActionBarActivity {
         textQuestion.setText("What number do you see?");
 
 
-        imageQuestion.setImageBitmap(bitconverter.getBitMap(questions.get(currentQuestion).getImage()));
+        imageQuestion.setImageBitmap(maps[currentQuestion]);
 
     }
 
@@ -80,10 +80,9 @@ public class TestActivity extends ActionBarActivity {
     public void createQuestions(){
 
         questions.clear();
-        Bitmap[] maps = new Bitmap[38];
         int first = 2130837559;
-        for(int x = 1; x <=38; x++){
-            maps[x-1] = BitmapFactory.decodeResource(getResources(), first);
+        for(int x = 0; x <=37; x++){
+            maps[x] = BitmapFactory.decodeResource(getResources(), first);
             first++;
         }
 
@@ -130,7 +129,6 @@ public class TestActivity extends ActionBarActivity {
 
         for (int x = 0; x<38; x++){
             questions.add(q[x]);
-            questions.get(x).setImage(bitconverter.getByteArray(maps[x]));
             if(x<25){
                 questions.get(x).setType(Type.Number);
             }else {
@@ -149,10 +147,15 @@ public class TestActivity extends ActionBarActivity {
             } else {
                 questions.get(currentQuestion).setCorrect(false);
             }
+            if(editAnswer.getText().toString().equals("")){
+                questions.get(currentQuestion).setAnswer("None");
+            }else {
+                questions.get(currentQuestion).setAnswer(editAnswer.getText().toString());
+            }
 
             currentQuestion++;
             if(currentQuestion < 38){
-                imageQuestion.setImageBitmap(bitconverter.getBitMap(questions.get(currentQuestion).getImage()));
+                imageQuestion.setImageBitmap(maps[currentQuestion]);
                 editAnswer.setText("");
                 plateName.setText("Plate " + (questions.get(currentQuestion).getPlate()+""));
                 if(questions.get(currentQuestion).getType().toString().equals("Line")){
@@ -164,8 +167,8 @@ public class TestActivity extends ActionBarActivity {
 
 
         } else {
-            Intent intent = new Intent(this, TestActivity.class);
-            intent.putExtra("QUESTION_LIST", questions);
+            Intent intent = new Intent(this, ResultsActivity.class);
+            intent.putExtra("QUESTION_LIST",questions);
             startActivity(intent);
         }
 
