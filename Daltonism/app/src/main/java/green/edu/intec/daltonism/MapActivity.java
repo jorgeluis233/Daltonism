@@ -115,12 +115,12 @@ public class MapActivity extends ActionBarActivity {
         DecimalFormat df = new DecimalFormat("0.00");
         int t = (int)count;
         textAverage.setText("You got "+ t+ " out of 38 answers correct for a "+df.format(percentage)+"% accuracy");
-        if(count >=32){
+        if(count >=30){
             level = "Zero";
-        } else if(count >= 27){
+        } else if(count >= 24){
             level = "Fair";
         }
-        else if(count >= 22){
+        else if(count >= 18){
             level = "Moderate";
         } else {
             level = "Severe";
