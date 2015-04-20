@@ -11,35 +11,57 @@
         android:layout_height="wrap_content"
         android:text="Your level of green/red daltonism is:"
         android:layout_width="fill_parent"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:textStyle="bold"
-        android:paddingTop="20dp">
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp">
     </TextView>
 
     <TextView
         android:id="@+id/viewTextResult"
         android:layout_height="wrap_content"
-        android:text="Your level of green/red daltonism is:"
+        android:text="result"
         android:layout_width="fill_parent"
-        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:textSize="15dp"
         android:textStyle="bold"
-        android:paddingTop="20dp">
+        android:paddingTop="10dp">
     </TextView>
 
-    <EditText
-        android:id="@+id/EditTextLocation"
+    <TextView
+        android:id="@+id/textViewAverage"
         android:layout_height="wrap_content"
-        android:hint="Ubicacion (Direccion)"
-        android:inputType="text"
+        android:text="average"
         android:layout_width="fill_parent"
-        android:paddingTop="20dp">>
-    </EditText>
+        android:paddingLeft="10dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+    </TextView>
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/background_dark"
+        />
+
+    <TextView
+        android:id="@+id/mapIndications"
+        android:layout_height="wrap_content"
+        android:text="Map of nearest Ophthalmologists"
+        android:paddingLeft="10dp"
+        android:layout_width="fill_parent"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+    </TextView>
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/map"
 
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:name="com.google.android.gms.maps.MapFragment"/>
 
 
