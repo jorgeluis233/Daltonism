@@ -57,7 +57,7 @@ public class ResultsActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_results) {
-            test();
+            resultMap();
             return true;
         }
 
@@ -109,7 +109,10 @@ public class ResultsActivity extends ActionBarActivity {
 
     }
 
-    public void test(){
-        Toast.makeText(this, "funciona", Toast.LENGTH_SHORT).show();
+    public void resultMap(){
+        Intent intent = new Intent(this, MapActivity.class);
+
+        intent.putExtra("QUESTION_LIST", questions);
+        startActivity(intent);
     }
 }

@@ -1,0 +1,48 @@
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="green.edu.intec.daltonism.MapActivity">
+
+    <TextView
+        android:id="@+id/viewTextLabel"
+        android:layout_height="wrap_content"
+        android:text="Your level of green/red daltonism is:"
+        android:layout_width="fill_parent"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingTop="20dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/viewTextResult"
+        android:layout_height="wrap_content"
+        android:text="Your level of green/red daltonism is:"
+        android:layout_width="fill_parent"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingTop="20dp">
+    </TextView>
+
+    <EditText
+        android:id="@+id/EditTextLocation"
+        android:layout_height="wrap_content"
+        android:hint="Ubicacion (Direccion)"
+        android:inputType="text"
+        android:layout_width="fill_parent"
+        android:paddingTop="20dp">>
+    </EditText>
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map"
+
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:name="com.google.android.gms.maps.MapFragment"/>
+
+
+</TableLayout>
+
+

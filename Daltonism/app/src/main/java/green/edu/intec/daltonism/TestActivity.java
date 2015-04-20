@@ -80,7 +80,8 @@ public class TestActivity extends ActionBarActivity {
     public void createQuestions(){
 
         questions.clear();
-        int first = 2130837559;
+        int first = 2130837589;
+
         for(int x = 0; x <=37; x++){
             maps[x] = BitmapFactory.decodeResource(getResources(), first);
             first++;
